@@ -1,43 +1,57 @@
 # 🤖 EduBot – Personalized AI Learning Assistant using Gemini 1.5 + LangChain
 
-EduBot is an intelligent AI-powered quiz and learning assistant that generates MCQs and personalized learning content based on user-selected topics or input content. It leverages Google’s **Gemini 1.5 Flash model**, **LangChain**, and advanced summarization techniques to deliver a smart, responsive, and engaging ed-tech experience.
+**EduBot** is a smart AI-powered learning assistant that dynamically generates quizzes and personalized summaries from PDF content or user input. It leverages **Gemini 1.5**, **LangChain**, and **RAG (Retrieval-Augmented Generation)** with vector databases to provide a cutting-edge learning experience.
+
+This is one of my 2–3 well-documented, production-ready AI projects with full working code.  
+✅ GitHub link is included in my resume.
+
+---
+
+## 🔥 Why EduBot? (Project Description – 200–300 words)
+
+EduBot is built to transform how students study. Traditional learning tools lack interactivity, but EduBot solves this by generating MCQs, summaries, and explanations using AI in real-time. The app accepts PDFs or topic prompts and then performs chunking, embedding, retrieval, and reasoning using a pipeline based on LangChain + Gemini 1.5 Flash.
+
+Key AI agent functionality includes:
+- Gemini-powered contextual chat for question-answering
+- Summarizer that generates topic-wise notes
+- RAG-based quiz creation with vectorstore indexing (FAISS)
+- PDF loader for ingesting learning content
+- Persistent vector search using `index.faiss` and `index.pkl`
+
+This project excites me because it brings together **LLM integration**, **RAG pipeline**, **vector search**, and **interactive UI** in a real-world ed-tech application. It reflects my end-to-end AI engineering skills and passion for building human-friendly tools with cutting-edge ML tech.
 
 ---
 
 ## ✨ Features
 
-- 🔍 **Topic-Based Quiz Generation**  
-  Generate 10+ MCQs per topic using context-aware AI.
-
-- 📄 **Smart Summarizer**  
-  Summarize lengthy study material into clear, concise points.
-
-- 📊 **Performance Tracker**  
-  Records user scores and progress using PostgreSQL.
-
-- 🧠 **AI-Powered Agent**  
-  Uses Gemini 1.5 + LangChain tools for planning and reasoning.
-
-- 💾 **Database-Backed**  
-  Persistent storage using PostgreSQL for scalability.
-
-- 💻 **Modern Fullstack App**  
-  React + Vite frontend, Node.js + TypeScript backend.
+- 🧠 **Gemini + LangChain Agent** – For planning, summarizing, and QA.
+- 📄 **PDF Summarization** – Upload a PDF and get summarized notes.
+- ❓ **Quiz Generator** – Extracts 10+ MCQs per topic via context-aware Gemini agent.
+- 🔎 **FAISS-based Search** – Efficient retrieval using `vectorstore.py`.
+- 🧰 **RAG Pipeline** – Combines PDF content, embeddings, and LLMs.
+- 🔧 **Full Python Backend** – Clean modular code for easy scaling.
+- 📦 **Dependency Isolation** – Python `venv` with `requirements.txt`.
 
 ---
 
 ## 🧰 Tech Stack
 
-| Layer       | Technology                          |
-|-------------|-------------------------------------|
-| 🧠 AI Model | Gemini 1.5 Flash (Google AI Studio) |
-| 🧩 Backend  | Node.js + Express + TypeScript      |
-| 🎨 Frontend | React.js + Vite + TypeScript        |
-| 🗄 Database | PostgreSQL                          |
-| 🔐 Auth     | JWT (optional)                      |
-| ⚙️ API Use  | LangChain, Gemini, Cohere (optional)|
+| Layer         | Technology                      |
+|---------------|----------------------------------|
+| 🤖 AI Model   | Gemini 1.5 Flash (Google AI)     |
+| 🔗 Framework  | LangChain                        |
+| 📄 PDF Parser | PyMuPDF / pdf_loader.py          |
+| 🔍 Retrieval  | FAISS Vector DB + Indexing       |
+| 🧠 RAG Agent  | rag_pipeline.py                  |
+| 🧩 Backend    | Python + FastAPI / Flask (as needed) |
+| 🗃️ Storage    | Local vectorstore (FAISS)         |
+| 🧪 Testing     | temp.pdf, uploaded.pdf samples    |
 
 ---
+
+## 📂 Project Folder Structure
+
+
 
 ## 🔑 Getting Started
 
@@ -47,9 +61,6 @@ EduBot is an intelligent AI-powered quiz and learning assistant that generates M
 git clone https://github.com/manivuppala124/EduBot.git
 cd EduBot
 2. Set up the Backend
-bash
-Copy
-Edit
 cd backend
 npm install
 touch .env
@@ -61,16 +72,10 @@ PORT=5000
 DATABASE_URL=postgres://<username>:<password>@localhost:5432/edubot
 GEMINI_API_KEY=your_gemini_api_key_here
 📦 Run Prisma & Start Server
-bash
-Copy
-Edit
 npx prisma generate
 npx prisma migrate dev --name init
 npm run dev
 3. Set up the Frontend
-bash
-Copy
-Edit
 cd ../frontend
 npm install
 npm run dev
@@ -83,23 +88,26 @@ Create a project and get your API Key
 Add it to your .env file as GEMINI_API_KEY
 
 📂 Project Folder Structure
-css
-Copy
-Edit
 EduBot/
 ├── backend/
-│   ├── routes/
-│   ├── controllers/
-│   ├── services/
-│   ├── prisma/
-│   └── index.ts
+│ ├── config.py
+│ ├── gemini_chat.py
+│ ├── main.py
+│ ├── pdf_loader.py
+│ ├── rag_pipeline.py
+│ ├── vectorstore.py
+│ └── requirements.txt
+├── db/
+│ ├── index.faiss
+│ └── index.pkl
 ├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   └── App.tsx
-└── README.md🔮```
+│ └── app.py
+├── venv/
+├── README.md
+├── .gitignore
+├── requirements.txt
+├── temp.pdf
+├── uploaded.pdf
  Future Scope
 ✅ User Authentication
 
