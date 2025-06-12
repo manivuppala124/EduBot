@@ -99,7 +99,8 @@ EduBot/
 │   │   ├── pages/
 │   │   ├── services/
 │   │   └── App.tsx
-└── README.md🔮 Future Scope
+└── README.md🔮```
+ Future Scope
 ✅ User Authentication
 
 ✅ Export quizzes to PDF
