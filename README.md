@@ -50,44 +50,6 @@ This project excites me because it brings together **LLM integration**, **RAG pi
 ---
 
 ## 📂 Project Folder Structure
-
-
-
-## 🔑 Getting Started
-
-### 1. Clone the Repo
-
-```bash
-git clone https://github.com/manivuppala124/EduBot.git
-cd EduBot
-2. Set up the Backend
-cd backend
-npm install
-touch .env
-📄 .env Example
-env
-Copy
-Edit
-PORT=5000
-DATABASE_URL=postgres://<username>:<password>@localhost:5432/edubot
-GEMINI_API_KEY=your_gemini_api_key_here
-📦 Run Prisma & Start Server
-npx prisma generate
-npx prisma migrate dev --name init
-npm run dev
-3. Set up the Frontend
-cd ../frontend
-npm install
-npm run dev
-🤖 Gemini 1.5 API Setup
-🔗 Get Gemini API Key
-Go to 👉 https://makersuite.google.com/app
-
-Create a project and get your API Key
-
-Add it to your .env file as GEMINI_API_KEY
-
-📂 Project Folder Structure
 EduBot/
 ├── backend/
 │ ├── config.py
@@ -108,43 +70,52 @@ EduBot/
 ├── requirements.txt
 ├── temp.pdf
 ├── uploaded.pdf
- Future Scope
-✅ User Authentication
 
-✅ Export quizzes to PDF
 
-✅ Voice-based quiz generator
+---
 
-✅ Daily MCQ challenge feature
+## 🚀 How to Run Locally
 
-✅ Gamified learning dashboard
+### 1. Clone the Repository
 
-✅ Chat-based quiz assistant
+```bash
+git clone https://github.com/manivuppala124/EduBot.git
+cd EduBot
+```
+### 2. Setup Virtual Environment
+```
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r backend/requirements.txt
+```
+### 3. Add Your Gemini API Key
+```
+GEMINI_API_KEY = "your_gemini_api_key"
+```
+### 4. Run Backend
+```
+cd backend
+python main.py
+```
+### 5. Use Sample PDFs
+Place temp.pdf or uploaded.pdf in the root and test PDF-based quiz generation.
 
-📜 License
-This project is licensed under the MIT License.
-Feel free to use, fork, and contribute ❤️
+🔮 Future Scope
+✅ Web frontend (React/Flask hybrid)
 
-🙏 Acknowledgements
-Google Gemini 1.5
+✅ Authentication and user profiles
 
-LangChain
+✅ Export results to PDF
 
-Cohere AI
+✅ Gamified progress tracker
 
-Striver DSA Sheet
+✅ Chat-based learning with memory
 
-Vite + React
 
 👨‍💻 Author
 Vuppala Manikanta
 B.Tech – CSE (AI & ML)
-📬 LinkedIn
-💻 GitHub
 
 ✨ Built with 💙 for the future of AI in education. If you find this project helpful, leave a ⭐️ and share!
 
 ---
-
-Manikanta, this is all ready to impress recruiters and your peers! Let me know if you'd like help with a GitHub action for deployment or a `TaskAgent` README next!  
-Good luck next challenges and tips to remember well and perform well in academics and your skills 🙏🏻🔥
