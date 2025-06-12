@@ -1,0 +1,4 @@
+# backend/config.py
+GEMINI_API_KEY = "AIzaSyAZOCr9C7nyPdadl057sOnoBGKGQn5Gl_w"
+CHUNK_SIZE = 500
+CHUNK_OVERLAP = 50

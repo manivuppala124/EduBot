@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+langchain
+google-generativeai
+faiss-cpu
+PyPDF2
+tiktoken
+streamlit
+python-multipart
