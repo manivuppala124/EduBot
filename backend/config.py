@@ -1,4 +1,11 @@
-# backend/config.py
-GEMINI_API_KEY = "AIzaSyAZOCr9C7nyPdadl057sOnoBGKGQn5Gl_w"
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Load from .env file if available
+
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 CHUNK_SIZE = 500
 CHUNK_OVERLAP = 50
+
+if not GEMINI_API_KEY:
+    raise ValueError("GEMINI_API_KEY not found in environment variables!")
