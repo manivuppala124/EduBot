@@ -1,12 +1,20 @@
-# backend/main.py
-
 from fastapi import FastAPI, File, UploadFile, Form
+from fastapi.middleware.cors import CORSMiddleware
 from backend.pdf_loader import load_and_split_pdf
 from backend.vectorstore import save_to_faiss
 from backend.rag_pipeline import get_qa_chain, generate_answer
 import shutil
 
 app = FastAPI()
+
+# ✅ Add CORS middleware here
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # 🔒 For production, use your frontend domain like ["https://yourfrontend.com"]
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/upload-pdf/")
 async def upload_pdf(file: UploadFile = File(...)):
