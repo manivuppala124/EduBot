@@ -1,0 +1,6 @@
+for backend
+D:\EduBot> uvicorn backend.main:app --reload
+for frontend
+venv\Scripts\activate 
+cd frontend
+streamlit run app.py

@@ -1,6 +1,6 @@
 # backend/pdf_loader.py
 
-from langchain.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import CharacterTextSplitter
 from backend.config import CHUNK_SIZE, CHUNK_OVERLAP
 

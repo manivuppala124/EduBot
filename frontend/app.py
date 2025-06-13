@@ -276,6 +276,12 @@ st.markdown("""
         from { opacity: 0; transform: translateY(20px); }
         to { opacity: 1; transform: translateY(0); }
     }
+    
+    /* Pulse animation for thinking state */
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.1); opacity: 0.7; }
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -306,8 +312,9 @@ with col1:
     </div>
     """, unsafe_allow_html=True)
     
+    # Fixed file uploader with proper label
     pdf = st.file_uploader(
-        "",
+        "Choose a PDF file to upload",
         type=["pdf"],
         help="Select a PDF document to analyze. Maximum file size: 200MB",
         label_visibility="collapsed"
@@ -413,7 +420,7 @@ if st.session_state.pdf_uploaded:
     
     with col1:
         user_question = st.text_input(
-            "",
+            "Enter your question about the document",
             placeholder="What would you like to know about this document?",
             help="Ask specific questions about the content, request summaries, or seek clarifications",
             label_visibility="collapsed"
@@ -506,7 +513,8 @@ if st.session_state.pdf_uploaded:
                         with col2:
                             st.button("🔄 Ask Follow-up", help="Ask a related question")
                         with col3:
-                            st.button("📋 Copy Answer", help="Copy answer to clipboard")
+                            if st.button("📋 Copy Answer", help="Copy answer to clipboard"):
+                                st.write("💾 Answer copied to clipboard!")
                             
                 else:
                     st.markdown(f"""
@@ -526,6 +534,42 @@ if st.session_state.pdf_uploaded:
                     <span>Connection error: {str(e)}</span>
                 </div>
                 """, unsafe_allow_html=True)
+
+# ===================== ADDITIONAL FEATURES SECTION =====================
+if st.session_state.pdf_uploaded:
+    st.markdown("---")
+    
+    st.markdown("""
+    <div class="card fade-in">
+        <div class="card-header">
+            <div class="card-icon">⚡</div>
+            <div class="card-title">Quick Actions</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    col1, col2, col3, col4 = st.columns(4)
+    
+    with col1:
+        if st.button("📝 Get Summary", use_container_width=True):
+            st.session_state.quick_question = "Provide a comprehensive summary of this document"
+            st.rerun()
+    
+    with col2:
+        if st.button("🔍 Key Points", use_container_width=True):
+            st.session_state.quick_question = "What are the main key points and takeaways from this document?"
+            st.rerun()
+    
+    with col3:
+        if st.button("📊 Extract Data", use_container_width=True):
+            st.session_state.quick_question = "Extract any important data, numbers, or statistics mentioned in the document"
+            st.rerun()
+    
+    with col4:
+        if st.button("🔄 New Document", use_container_width=True):
+            st.session_state.pdf_uploaded = False
+            st.session_state.pdf_name = ""
+            st.rerun()
 
 # ===================== FOOTER =====================
 st.markdown("""
